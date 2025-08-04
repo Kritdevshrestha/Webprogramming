@@ -1,0 +1,268 @@
+/* Base Styling */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff8f2;
+  color: #5f14ab;
+}
+
+/* Layout Container */
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header (Stacked layout) */
+.custom-header {
+  background-color: #a564c6;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Logo - first row */
+.logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* Title - second row */
+.brand-title {
+  font-size: 2rem;
+  margin: 0 0 15px 0;
+}
+
+/* Navigation - third row */
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #f3d3ff;
+}
+
+/* Afnan Brand Description */
+.brand-description {
+  background-color: #fcefff;
+  color: #5f14ab;
+  text-align: center;
+  padding: 20px 30px;
+  font-size: 1.1rem;
+   min-height: 100vh;
+  font-weight: 500;
+  line-height: 1.6;
+  border-top: 2px solid #d3a2e8;
+  border-bottom: 2px solid #d3a2e8;
+  
+  
+}
+
+
+/* Footer */
+footer {
+  background-color: #2f2f2f;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+}
+
+footer a {
+  color: #d9a7ff;
+  text-decoration: none;
+}
+
+/* Product Grid using Flex */
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px 20px;
+}
+
+/* Make each product a horizontal flex row with image left and info right */
+.product {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  background-color: #fff;
+  border: 2px solid #cba0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 600px; /* wider to fit two columns nicely */
+  align-items: center;
+  text-align: left; /* align text left */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px; /* spacing between products */
+}
+
+.product-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.view-more {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #a564c6;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-more:hover {
+  background-color: #8a4baf;
+}
+
+
+.product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Product image styling */
+.product img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 3px solid #8a4baf;
+  margin: 0;
+  flex-shrink: 0; /* prevent image shrinking */
+}
+
+/* Product info section */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+/* Product title */
+.product-info h3 {
+  margin: 0;
+  color: #5f14ab;
+}
+
+/* Price text */
+.product-info p {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #8a4baf;
+}
+
+/* Add to cart button */
+.add-to-cart {
+  padding: 10px 20px;
+  background-color: #a564c6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  width: fit-content;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background-color: #8a4baf;
+}
+
+main {
+  flex-grow: 1;             
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center;      
+  padding: 20px;
+  text-align: center;
+}
+
+
+/* Back to Collection Link */
+.container > a {
+  display: inline-block;
+  margin-bottom: 25px;
+  color: #a564c6;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.container > a:hover,
+.container > a:focus {
+  color: #8a4baf;
+  outline: none;
+}
+
+/* Product Detail */
+.product-detail {
+  text-align: center;
+}
+
+.product-detail img {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  border: 3px solid #8a4baf;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 12px rgba(138, 75, 175, 0.3);
+  object-fit: cover;
+}
+
+.product-detail h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #a564c6;
+}
+
+.product-detail p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 15px auto;
+  color: #333;
+}
+
+.product-detail p strong,
+.product-detail p b {
+  color: #8a4baf;
+  font-weight: 600;
+}
+
+main {
+  flex-grow: 1;             
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center;      
+  padding: 20px;
+  text-align: center;
+}
