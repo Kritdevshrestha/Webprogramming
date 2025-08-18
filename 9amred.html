@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Afnan Perfumes - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container d-flex flex-column min-vh-100">
+
+    <!-- Header -->
+<header class="custom-header">
+  <nav class="navbar navbar-expand-md custom-navbar">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand me-3" href="index.html">
+        <img src="images/afnanlogo.png" alt="Afnan Perfumes Logo" class="logo">
+      </a>
+
+      <!-- Toggle button for mobile -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar collapse -->
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <!-- Search Bar (always visible) -->
+        <form class="d-flex mx-auto my-2 my-md-0 search-form" role="search">
+          <input class="form-control me-2 search-input" type="search" placeholder="Search products...">
+          <button class="btn btn-search" type="submit">Search</button>
+        </form>
+
+        <!-- Menu links + Cart/Login -->
+        <ul class="navbar-nav ms-auto mb-2 mb-md-0 gap-3">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link active" href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html"><i class="fas fa-user"></i> Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<body class="bg-light">
+
+  <div class="container my-5">
+
+    <div class="row g-4">
+
+      <!-- Product Image -->
+      <div class="col-12 col-md-6 text-center">
+        <img src="images/9amred.png" alt="Afnan 9AM" class="img-fluid rounded shadow-sm" style="max-height: 400px;">
+      </div>
+
+      <!-- Product Details -->
+      <div class="col-12 col-md-6">
+        <h2 class="text-purple fw-bold">Afnan 9AM Edp De Parfum 100ML</h2>
+        <p class="fs-4 text-purple fw-semibold">Price: Rs 5000</p>
+
+        <h5 class="mt-4">Description:</h5>
+        <p>
+          Experience the luxurious aroma of Afnan 9AM Edp De Parfum. 
+          With fresh, floral, and musky notes, this perfume is perfect for daily wear or special occasions.
+          Carefully crafted to leave a lasting impression, this fragrance is ideal for those who appreciate elegance and sophistication.
+        </p>
+
+        <!-- Quantity Selector -->
+        <div class="mb-3">
+          <label for="quantity" class="form-label">Quantity:</label>
+          <input type="number" id="quantity" class="form-control w-25" value="1" min="1">
+        </div>
+
+        <div class="d-flex gap-3 mt-4 flex-wrap">
+          <a href="cart.html" class="btn btn-purple btn-lg flex-fill">Add to Cart</a>
+          <a href="products.html" class="btn btn-outline-purple btn-lg flex-fill">Back to Products</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Customer Reviews Section -->
+    <div class="reviews mt-5">
+      <h3 class="text-purple mb-4">Customer Reviews</h3>
+
+      <!-- Review 1 -->
+      <div class="card mb-3 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">John Doe</h5>
+          <p class="text-warning mb-2">★★★★★</p>
+          <p class="card-text">"Amazing fragrance, lasts all day! Highly recommend."</p>
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="card mb-3 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Jane Smith</h5>
+          <p class="text-warning mb-2">★★★★☆</p>
+          <p class="card-text">"Beautiful scent, elegant and sophisticated. Perfect for evening wear."</p>
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="card mb-3 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Ali Khan</h5>
+          <p class="text-warning mb-2">★★★★★</p>
+          <p class="card-text">"Very high-quality perfume. I receive compliments every time I wear it."</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+
+
+ <footer>
+      <p>&copy; 2025 Krit's Perfume Collection. All rights reserved.</p>
+      <p>Contact us at: <a href="mailto:info@afnanperfumes.com">info@afnanperfumes.com</a></p>
+    </footer>
+
+</div>
+</html>
+

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Cart - Afnan Perfumes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .cart-img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .remove-btn {
+      cursor: pointer;
+      color: #dc3545;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container d-flex flex-column min-vh-100">
+    <!-- Header -->
+<header class="custom-header">
+  <nav class="navbar navbar-expand-md custom-navbar">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand me-3" href="index.html">
+        <img src="images/afnanlogo.png" alt="Afnan Perfumes Logo" class="logo">
+      </a>
+
+      <!-- Toggle button for mobile -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar collapse -->
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <!-- Search Bar (always visible) -->
+        <form class="d-flex mx-auto my-2 my-md-0 search-form" role="search">
+          <input class="form-control me-2 search-input" type="search" placeholder="Search products...">
+          <button class="btn btn-search" type="submit">Search</button>
+        </form>
+
+        <!-- Menu links + Cart/Login -->
+        <ul class="navbar-nav ms-auto mb-2 mb-md-0 gap-3">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link active" href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html"><i class="fas fa-user"></i> Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+    <!-- Cart Content -->
+    <div class="container my-5">
+      <h2 class="text-center mb-4">Your Shopping Cart</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle text-center">
+          <thead style="background-color: #a564c6; color: white;">
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody id="cart-items">
+            <!-- JS inserts cart rows here -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Buttons and Total -->
+      <div class="d-flex justify-content-between mt-3 align-items-center">
+        <a href="products.html" class="btn btn-secondary">
+          <i class="fa-solid fa-plus"></i> Add Another Item
+        </a>
+
+        <div class="text-end">
+          <h4>Grand Total: <span id="grand-total">Rs 0.00</span></h4>
+          <a href="checkout.html" class="btn btn-purple mt-2">Proceed to Checkout</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Krit's Perfume Collection. All rights reserved.</p>
+      <p>Contact us at: <a href="mailto:info@afnanperfumes.com">info@afnanperfumes.com</a></p>
+    </footer>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function formatPrice(price) {
+      return 'Rs ' + price.toFixed(2);
+    }
+
+    function updateGrandTotal(cart) {
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price * item.quantity;
+      });
+      document.getElementById('grand-total').textContent = formatPrice(total);
+    }
+
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const tbody = document.getElementById('cart-items');
+      tbody.innerHTML = '';
+
+      if (cart.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="text-center">Your cart is empty.</td></tr>`;
+        updateGrandTotal([]);
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const tr = document.createElement('tr');
+
+        tr.innerHTML = `
+          <td class="d-flex align-items-center gap-3">
+            ${item.image ? `<img src="${item.image}" alt="${item.name}" class="cart-img" />` : ''}
+            <span>${item.name}</span>
+          </td>
+          <td>${formatPrice(item.price)}</td>
+          <td>
+            <input type="number" min="1" value="${item.quantity}" class="form-control quantity-input" data-index="${index}" style="width:80px; margin:auto;" />
+          </td>
+          <td class="item-total">${formatPrice(item.price * item.quantity)}</td>
+          <td>
+            <i class="fas fa-trash remove-btn" data-index="${index}" title="Remove item"></i>
+          </td>
+        `;
+
+        tbody.appendChild(tr);
+      });
+
+      updateGrandTotal(cart);
+
+      // Quantity change handler
+      document.querySelectorAll('.quantity-input').forEach(input => {
+        input.addEventListener('change', (e) => {
+          const idx = e.target.getAttribute('data-index');
+          let qty = parseInt(e.target.value);
+          if (qty < 1 || isNaN(qty)) {
+            qty = 1;
+            e.target.value = 1;
+          }
+
+          const cart = JSON.parse(localStorage.getItem('cart')) || [];
+          cart[idx].quantity = qty;
+          localStorage.setItem('cart', JSON.stringify(cart));
+          renderCart();
+        });
+      });
+
+      // Remove item handler
+      document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const idx = e.target.getAttribute('data-index');
+          const cart = JSON.parse(localStorage.getItem('cart')) || [];
+          cart.splice(idx, 1);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          renderCart();
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', renderCart);
+  </script>
+</body>
+</html>
